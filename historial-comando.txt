@@ -1,0 +1,12 @@
+git pull origin
+eval"$(ssh-agent -s)"
+ssh-add /home/juan/llaves-ssh/jareina
+eval"$(ssh-agent -s)"
+git remote add origin https://gitlab.com/JAreina/prueba-de-git.git
+git push -u origin --all
+git remote -v
+git remote remove origin
+git remote -v
+git push -u origin --all
+git remote add origin https://gitlab.com/JAreina/prueba-de-git.git
+git push
