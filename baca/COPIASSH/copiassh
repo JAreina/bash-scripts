@@ -1,0 +1,34 @@
+#bin/bash
+
+archivo=$1
+usuarioDestino=$2
+ipDestino=$3
+
+rutaDestino=$4
+
+function modoDeUso(){
+echo "AYUDA : $ copiassh help"
+echo "MODO DE USO: $ copiassh archivo usuarioDestino ipDestino rutaDestino"
+}
+
+
+
+if [ $# == 0 ]
+then 
+modoDeUso
+
+else
+
+  if [ $1 == "help" ]
+   then
+       modoDeUso
+   else
+     if [  -d $archivo ]
+      then 
+       scp  -r $archivo "$usuarioDestino@$ipDestino:$rutaDestino"
+
+     else
+       scp $archivo "$usuarioDestino@$ipDestino:$rutaDestino"
+    fi
+  fi
+fi

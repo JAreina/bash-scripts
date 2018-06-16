@@ -1,0 +1,120 @@
+#!/bin/bash
+
+DATE=`date +%Y-%m-%d-%H-%M`
+#bash
+
+directorio=$1
+
+destino="$HOME/COMPRIME"
+              
+EMPIEZA=$(date +%s)
+
+echo ${EMPIEZA}
+
+contarTiempoEjecucion()
+{
+dur=$(echo "$(date +%s) - $EMPIEZA" | bc)
+hms=`date -d "1970-01-01 $dur sec" +"%H:%M:%S"`
+echo "EN: $hms"
+
+ 
+}        
+						            # si no hay argumento 
+							if [ ! $1 ]
+								then
+								 echo " "
+								 echo " "
+								 echo "NO HAS INTRODUCIDO EL NOMBRE DE LA CARPETA A COMPRIMIR"
+								 echo " "
+                                 contarTiempoEjecucion
+						   else
+						        if [ $1 == "help" ]
+									then
+									echo " "
+									 echo " "
+									 echo "EJEMPLO :  $ comprime nombreDirectorio [-d]"
+									 echo " Opcion:  -d (borra el directorio que se va a comprimir)"
+                                     contarTiempoEjecucion
+						       else
+																	   
+						
+
+											 # si existe el directorio a comprimir
+									 if [ -d ${directorio} ]
+									 then
+										# si no existe el directorio destino
+						               echo $#
+										   if [ ! -d ${HOME}/COMPRIME ] 
+												then
+												mkdir $HOME/COMPRIME
+										   fi
+											cd .
+
+
+											echo "... Comprimiendo ..."
+											echo " "
+											tar -czvpf ${DATE}-${directorio}.tar.gz ${directorio}
+                                            echo " "
+                                            echo "________________"
+                                            echo "COMPRESIÓN HECHA"
+                                          
+                                            contarTiempoEjecucion
+                                            echo "____________"
+                                            EMPIEZA=$(date +%s)
+											echo "... Moviendo a ... ${destino}" 
+											mv $DATE-$1.tar.gz ${destino}/$DATE-$1.tar.gz
+                                            echo "MOVIDO : $DATE-$1.tar.gz"
+                                           
+                                            contarTiempoEjecucion
+                                             
+                                            
+                                            echo "____________"
+												  if [ $# > 1 ]
+						                            then 
+						                                 if [ "$2" == "-d" ] # borrar carpeta que se ha comprimido
+												          then
+                                                              EMPIEZA=$(date +%s)
+                                                             echo ""
+                                                             echo "... Borrando ... ${directorio}"
+                                                             echo ""
+												            rm -Rf ${directorio}
+                                                            echo " "
+                                                            echo "_______"
+												            echo "BORRADO : ${directorio}"
+                                                            #rm 1
+                                                            contarTiempoEjecucion
+                                                            echo "____________"
+
+ 
+												         fi
+						                         fi
+											echo " "
+                                            echo "__________"
+											echo "COMPLETADO"
+                                            echo "__________"
+                                            echo " "
+                                            rm 1  #borrar el archivo que se crea al moverlo
+									else
+									   echo " " 
+									   echo "NO EXISTE ESE DIRECTORIO"
+									   echo " "
+                                        contarTiempoEjecucion
+									 fi
+						  fi
+
+
+
+
+					fi
+ 
+			
+
+
+
+
+
+
+
+
+
+

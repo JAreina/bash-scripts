@@ -1,0 +1,14 @@
+gpg -c nombre > salida
+
+
+gpg -d nombre
+
+directorio: ,,,,,,,,,,,,,,,,,,,
+
+
+ gpg-zip -c -o salida.gpg carpeta
+gpg-zip -d salida.gpg
+
+
+ encripta -e yo-documentacion
+ encripta -d yo-documentacion.gpg

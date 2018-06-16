@@ -1,0 +1,57 @@
+#bin/bash
+
+
+
+parametro1=$1
+
+if [ $# -eq 0 ] || [ $1 == "help" ] ;
+then 
+echo "MODO DE USO : "
+echo "              $ mongolo {start | stop | restart | status | mongo}"
+
+else
+
+case "$parametro1" in
+        start)
+             
+             sudo service mongod start
+             printf " "
+             printf "ARRANCANDO EL MONGO..."
+             printf " "
+             sleep 4  #segundos
+             mongo
+            ;;
+         
+        stop)
+           sudo service mongod stop
+           echo ""
+           echo "APAGANDO mongoooooooo"
+           echo ""
+           echo "Mongoooooooooooooooo"
+            ;;
+         
+        restart)
+            printf " "
+            printf "REINICIANDO EL MONGO"
+            printf " "
+            sudo service mongod restart 
+            sleep 3
+            sudo service mongod status
+            sleep 2
+            mongo
+            ;;
+        status)
+           sudo service mongod status
+            ;;
+         mongo)
+           mongo
+            ;;
+        
+        *)
+            echo " prueba otra vez :  $ mongolo help"
+            exit 1
+ 
+esac
+
+
+fi
