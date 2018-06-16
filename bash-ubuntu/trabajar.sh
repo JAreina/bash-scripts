@@ -1,7 +1,6 @@
 #!/bin/bash
 
-gvfs-mount -d /dev/sda7 /media/juan/DATA &&
+gvfs-mount -d /dev/sda7 $HOME/DATA &&
 cherrytree &&
 thunar  &&
-code &&
-deluge
+code
