@@ -1,0 +1,7 @@
+#bin/bash
+
+lxterminal 
+
+mongod --dbpath ~/data/db
+
+

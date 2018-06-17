@@ -1,0 +1,21 @@
+#bin/bash
+
+#ipOrigen=hostname -I
+usuario=$1
+ipDestino=$2
+
+
+if [  $# -eq 0  ]
+then
+echo " Ejemplo: $ conectassh nombreUsuario ipDestino"
+
+else
+
+if [  "$1" == "help"  ]
+then 
+echo " Ejemplo: $ conectassh nombreUsuario ipDestino"
+else
+ssh "$1@$2"
+fi
+fi
+

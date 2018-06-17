@@ -1,0 +1,34 @@
+
+mi bash:
+
+CONECTAR A ANFITRION
+-----------------------------------------
+
+bash conectassh juan ip    (xubuntu ) 
+
+
+IP MAQUINA VIRTUAL
+------------------------------------
+
+ ip     
+
+
+COPIAR ARCHIVO
+--------------------------
+                 archivo a copiar                                       a donde se copia
+scp    historial.comandos                  juan@ip:~/Descargas/nod 
+
+
+
+COPIAR DIRECTORIO
+----------------------------------
+
+ scp -r /media/juan/DATA/CHERRYTREE-NOTAS  juan@ip:~/Desktop
+
+
+CONOCER IP 
+---------------------
+
+$ hostname -I
+
+
