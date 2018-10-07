@@ -1,0 +1,24 @@
+#!/bin/bash
+# bash midiAMp3  cancion1.mid cancion2.mid 
+
+directorio=$HOME/MUSIC_CONVERTIDA
+
+for i in "$@"
+do
+INPUT=$i
+SUBSTRING=$(echo $INPUT| cut -d'.' -f 1)
+echo $SUBSTRING
+echo $INPUT
+
+timidity $i -Ow -o - | ffmpeg -i - -acodec libmp3lame -ab 64k ${SUBSTRING}.mp3
+
+
+done
+
+if [ ! -d ${directorio} ];
+then 
+mkdir $directorio
+
+fi
+
+find . -name "*.mp3" -exec mv -t ${directorio} '{}' \;
