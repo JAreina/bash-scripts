@@ -1,0 +1,11 @@
+#!/bin/bash
+
+sudo systemctl stop clamav-freshclam
+sudo freshclam
+echo "ESCANEANDO ${1}"
+if [ -d ${1} ] ;then
+sudo clamscan -r -i $1
+else
+sudo clamscan $1
+fi
+
